@@ -44,3 +44,11 @@ def post_department(dept=DepartmentCreate):
     session.commit()
     session.close()
     return {"department added"}
+
+@app.post("/students")
+def post_Student(std=StudentsCreate):
+    std1=Student(name=std.name,
+                 dept_id=std.dept_id)
+    session.add(std1)
+    session.commit()
+    session.close()
