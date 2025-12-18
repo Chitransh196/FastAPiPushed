@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 from Student_project import Session
-from models import Student, Department
+from models import Student, Department, DepartmentCreate, StudentsCreate
 
 app = FastAPI()
-
+session=Session()
 @app.get("/Student")
 def get_students():
-    session = Session()
-
+    session
     students = session.query(Student).all()
     result = []
 
@@ -37,3 +36,11 @@ def get_departments():
     session.close()
     return result
 
+@app.post("/departments")
+def post_department(dept=DepartmentCreate):
+    session 
+    depart= Department(name=dept.name)
+    session.add(depart)
+    session.commit()
+    session.close()
+    return {"department added"}
